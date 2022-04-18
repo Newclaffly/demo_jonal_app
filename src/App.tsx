@@ -30,27 +30,16 @@ function App() {
     });
   }
 
-  // const test = () => {
-  //   APIData.map((val) => {
-  //     const config = {
-  //       id: val.id,
-  //       title: val.title,
-  //       url_image: val.url_image
-  //     }
-  //   })
-  // }
+  const updateUser = (id: string) => {
+    window.location.href = '/update/' + id
+  }
 
-  // const updateUser = (id: string) => {
-  //   window.location.href = '/update/' + id
-  // }
-
-  // const deleteJonal = (id: string) => {
-  //   axios.delete(`http://localhost:3000/deleteJonal/${id}`)
-  //     .then(() => {
-  //       getJonalData();
-  //     })
-  // }
-  console.log(APIData)
+  const deleteJonal = (id: string) => {
+    axios.delete(`http://localhost:3000/deleteJonal/${id}`)
+      .then(() => {
+        getJonalData();
+      })
+  }
 
   return (
     <div className="App">
@@ -60,6 +49,8 @@ function App() {
         <Route path='/create' element={<FormCreateJonal />} />
         <Route path='/listjonal' element={<ItemListjonal 
           APIDatas={APIData}
+          updateUser={updateUser}
+          deleteJonal={deleteJonal}
         />} />
         <Route path='/update/:id' element={<FormUpdateJonal />} />
         <Route path="*" element={<Nomatch />} />

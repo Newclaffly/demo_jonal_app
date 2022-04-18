@@ -9,6 +9,8 @@ interface ItemListjonalApp {
 
 interface ItemListTest {
   APIDatas: ItemListjonalApp[];
+  updateUser:(id:string)=>void
+  deleteJonal: (id:string)=>void
 }
 
 function ItemListjonal(props: ItemListTest) {
@@ -48,9 +50,8 @@ function ItemListjonal(props: ItemListTest) {
           <div className="item-jonal-list" key={val.id}>
             <h4>{val.id}</h4>
             <h4>{val.title}</h4>
-            {/*            
-            <button onClick={() => UpdateUser(val.id)}>Update</button>
-            <button onClick={() => DeleteJonal(val.id)}>X</button> */}
+            <button onClick={() => props.updateUser(val.id)}>Update</button>
+            <button onClick={() => props.deleteJonal(val.id)}>X</button> 
             <br />
             <br />
             <img src={val.url_image} alt={val.id} />
